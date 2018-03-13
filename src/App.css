@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+}
+
+.center {
+  background-color: #ffffffe6;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 25px;
+  padding-bottom: 50px;
+}
+
+body{
+  background: url(https://i.imgur.com/9Rts480.jpg) no-repeat center center fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: initial;
+}
+
+.cont {
+  background-repeat: no-repeat;
+  background-size: 100% 100%
+}
+
+.right{
+  float: right;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
