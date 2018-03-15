@@ -20,7 +20,7 @@ class MainMenu extends Component {
 
         <List>
           <ListItem primaryText="Table" leftIcon={<ForTable />}/>
-          <ListItem primaryText="Kitchen" leftIcon={<ForKit />}/>
+          <ListItem primaryText="Kitchen" leftIcon={<ForKit />} onClick={()=>this.props.history.push('/kitchen')}/>
           <ListItem primaryText="Dessert Kitchen" leftIcon={<Fordessertkit />}/>
           <ListItem primaryText="Cashier" leftIcon={<ForCashier />}/>
           <ListItem primaryText="Menu Management" leftIcon={<AddMenu />} onClick={()=>this.props.history.push('/manage')}/>

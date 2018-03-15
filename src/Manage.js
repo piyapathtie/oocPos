@@ -44,7 +44,7 @@ class Manage extends Component {
     this.state = {
       value: 1,
       name: "",
-      email: "",
+      price: "",
       disable: true,
       // value: 1,
     };
@@ -52,7 +52,7 @@ class Manage extends Component {
 
   sendRequest = () => {
     const data = {name: this.state.name,
-      email: this.state.email};
+      price: this.state.email};
       console.log(this.state.value);
     // axios.post("/demo/order", data)
     //   .then((response) => {
@@ -76,7 +76,7 @@ class Manage extends Component {
   };
 
   checkButtonDisable = () => {
-    if (this.state.name != "" && this.state.email != "") {
+    if (this.state.name != "" && this.state.price != "") {
       this.setState({disable: false})
     }
     else{
@@ -91,7 +91,9 @@ class Manage extends Component {
 
 
   updatePrice = (e) => {
-    this.setState({email: e.target.value}, () => this.checkButtonDisable());
+    if(!isNaN(e.target.value)){
+      this.setState({price: e.target.value}, () => this.checkButtonDisable());
+    }
   };
 
   handleChange = (event, index, value) => this.setState({value});
@@ -134,7 +136,7 @@ class Manage extends Component {
          <TextField
            style={{marginLeft:"25px"}}
            floatingLabelText="Price"
-           value={this.state.email}
+           value={this.state.price}
            onChange={(e)=> {this.updatePrice(e)}}
          />
          <br />

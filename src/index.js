@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom
 
 import MainMenu from "./MainMenu";
 import Manage from "./Manage";
+import Kitchen from "./Kitchen";
 
 
 function Path(){
@@ -23,6 +24,7 @@ function Path(){
             <Route path="/" exact component={App}/>
             <Route path="/mainmenu" exact component={MainMenu} />
             <Route path="/manage" exact component={Manage} />
+            <Route path="/kitchen" exact component={Kitchen} />
           </div>
         </Router>
       </MuiThemeProvider>
