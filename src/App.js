@@ -6,21 +6,22 @@ import urlencode from 'form-urlencoded'
 import RaisedButton from 'material-ui/RaisedButton';
 import authentication from './store.js'
 
-
-function UsernameField({onChange}){
+function UsernameField({onChange, onKeyPress}){
   return (<TextField
-    hintText="Username Field"
+    hintText="Username"
     floatingLabelText="Username"
     onChange={(e) => onChange(e.target.value)}
+    onKeyPress={onKeyPress}
   />)
 }
 
-function PasswordField({onChange}){
+function PasswordField({onChange, onKeyPress}){
   return (<TextField
     hintText="Password Field"
     floatingLabelText="Password"
     type="password"
     onChange={(e) => onChange(e.target.value)}
+    onKeyPress={onKeyPress}
   />)
 }
 
@@ -38,6 +39,7 @@ class App extends Component {
     this.state = {
       username: "",
       password: "",
+      show: false,
     };
   }
 
@@ -49,34 +51,51 @@ class App extends Component {
 
       axios.post("/login", urlencode(loginParams))
         .then((response) => {
-          console.log(response);
-          console.log('sucess');
           authentication.authen = true
           authentication.role = response.data.role
           console.log(authentication);
+          this.props.history.push('/mainmenu')
         })
         .catch((error) => {
           console.log(error)
-          console.log('failed');
+          console.log('login failed');
+          this.setState({show: true})
+          console.log(authentication);
         })
   }
 
-  onUsernameChange(username){
+  onUsernameChange = (username) =>{
+    // if (username.charCode == 13) {
+    //   this.sendRequest()
+    // }
     this.setState({username})
   }
 
-  onPasswordChange(password){
+  onPasswordChange = (password) => {
     this.setState({password})
+  }
+
+  onEnterpress = (e) => {
+    if (e.charCode == 13) {
+      this.sendRequest()
+    }
   }
 
   render() {
     return (
       <div class="center">
-          <h4> LOGIN TO YOUR RESTAURANT ACCOUNT </h4>
+          <h4> LOGIN TO ACCESS YOUR RESTAURANT POS</h4>
           <br/>
-            <UsernameField onChange={this.onUsernameChange.bind(this)} />
+          <div style={{ display: (this.state.show ? 'block' : 'none'), color: "red" }}>Wrong username or password</div>
+            <UsernameField
+              onChange={this.onUsernameChange}
+              onKeyPress={this.onEnterpress}
+            />
           <br />
-            <PasswordField onChange={this.onPasswordChange.bind(this)} />
+            <PasswordField
+              onChange={this.onPasswordChange}
+              onKeyPress={this.onEnterpress}
+            />
           <br />
           <div class="right">
             <LoginButton onClick={this.sendRequest}/>

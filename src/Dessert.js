@@ -27,7 +27,7 @@ import {
 function Bar({onClick}) {
     return(
         <AppBar
-          title="Kitchen"
+          title="Dessert Bar"
           iconElementLeft={
             <IconButton onClick={onClick}>
               <BackIcon/>
@@ -38,7 +38,7 @@ function Bar({onClick}) {
 }
 
 
-class Kitchen extends React.Component {
+class Dessert extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -136,4 +136,4 @@ class Kitchen extends React.Component {
   }
 }
 
-export default Kitchen;
+export default Dessert;

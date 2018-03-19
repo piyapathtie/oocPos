@@ -13,6 +13,10 @@ import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom
 import MainMenu from "./MainMenu";
 import Manage from "./Manage";
 import Kitchen from "./Kitchen";
+import tableNo from "./TableNo"
+import Dessert from "./Dessert"
+import Cashier from "./Cashier"
+import SaleReport from "./SaleReport"
 
 
 function Path(){
@@ -25,6 +29,10 @@ function Path(){
             <Route path="/mainmenu" exact component={MainMenu} />
             <Route path="/manage" exact component={Manage} />
             <Route path="/kitchen" exact component={Kitchen} />
+            <Route path="/tableNo" exact component={tableNo} />
+            <Route path="/dessert" exact component={Dessert} />
+            <Route path="/cashier" exact component={Cashier} />
+            <Route path="/saleReport" exact component={SaleReport} />
           </div>
         </Router>
       </MuiThemeProvider>
