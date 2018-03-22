@@ -17,6 +17,7 @@ import tableNo from "./TableNo"
 import Dessert from "./Dessert"
 import Cashier from "./Cashier"
 import SaleReport from "./SaleReport"
+import Menu from "./Menu"
 
 
 function Path(){
@@ -33,6 +34,7 @@ function Path(){
             <Route path="/dessert" exact component={Dessert} />
             <Route path="/cashier" exact component={Cashier} />
             <Route path="/saleReport" exact component={SaleReport} />
+            <Route path="/menu" exact component={Menu} />
           </div>
         </Router>
       </MuiThemeProvider>

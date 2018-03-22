@@ -83,24 +83,28 @@ class App extends Component {
 
   render() {
     return (
-      <div class="center">
-          <h4> LOGIN TO ACCESS YOUR RESTAURANT POS</h4>
-          <br/>
-          <div style={{ display: (this.state.show ? 'block' : 'none'), color: "red" }}>Wrong username or password</div>
-            <UsernameField
-              onChange={this.onUsernameChange}
-              onKeyPress={this.onEnterpress}
-            />
-          <br />
-            <PasswordField
-              onChange={this.onPasswordChange}
-              onKeyPress={this.onEnterpress}
-            />
-          <br />
-          <div class="right">
-            <LoginButton onClick={this.sendRequest}/>
-          </div>
-      </div>
+        <div>
+            <div class="center">
+                {/*<div class="cen2">*/}
+                    <h4> LOGIN TO ACCESS YOUR RESTAURANT POS</h4>
+                    <br/>
+                    <div style={{ display: (this.state.show ? 'block' : 'none'), color: "red" }}>Wrong username or password</div>
+                    <UsernameField
+                        onChange={this.onUsernameChange}
+                        onKeyPress={this.onEnterpress}
+                    />
+                    <br />
+                    <PasswordField
+                        onChange={this.onPasswordChange}
+                        onKeyPress={this.onEnterpress}
+                    />
+                    <br />
+                    <div class="right">
+                        <LoginButton onClick={this.sendRequest}/>
+                    </div>
+                {/*</div>*/}
+            </div>
+        </div>
     );
   }
 }

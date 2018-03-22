@@ -38,20 +38,18 @@ class tableNo extends React.Component {
     }
   }
 
-  checkexistedtable = (table_id) => {
-    axios.get(`/check_id/${String(table_id)}`)
+  checkexistedtable = (table) => {
+    axios.get(`/demo/status_table?table=${table}`)
       .then((response) => {
         this.setState({checkfrombn: response.data})
       }).then(()=>{
-
         if(this.state.checkfrombn === false){
           this.setState({show: true})
         }
-
         else{
           localStorage.setItem("tableID", parseInt(this.state.input))
-          // this.props.history.push('/main')
           localStorage.setItem('toCart', JSON.stringify([]))
+          this.props.history.push('/menu')
         }
 
       })
