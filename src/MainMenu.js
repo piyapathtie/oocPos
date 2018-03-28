@@ -18,7 +18,7 @@ function Bar() {
     return(
         <AppBar
           title="Main Menu"
-          iconElementLeft={<IconButton/>}
+          showMenuIconButton={false}
           style={{backgroundColor: "#D50000"}}
         />
   );
@@ -43,7 +43,7 @@ class MainMenu extends Component {
           <List>
             <ListItem primaryText="Table" leftIcon={<ForTable />} onClick={()=>this.props.history.push('/tableNo')}/>
             <ListItem primaryText="Kitchen" leftIcon={<ForKit />} onClick={()=>this.props.history.push('/kitchen')}/>
-            <ListItem primaryText="Dessert Kitchen" leftIcon={<Fordessertkit />} onClick={()=>this.props.history.push('/dessert')}/>
+            <ListItem primaryText="Dessert Kitchen" leftIcon={<Fordessertkit />} onClick={()=>this.props.history.push('/dessertkitchen')}/>
             <ListItem primaryText="Cashier" leftIcon={<ForCashier />} onClick={()=>this.props.history.push('/cashier')}/>
             <ListItem primaryText="Menu Management" leftIcon={<AddMenu />} onClick={()=>this.props.history.push('/manage')}/>
             <ListItem primaryText="Sale Report" leftIcon={<Chart />} onClick={()=>this.props.history.push('/saleReport')}/>

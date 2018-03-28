@@ -65,7 +65,7 @@ class Kitchen extends React.Component {
   }
 
   updateItemStatus = (id, status) => {
-    axios.put(`/demo/update_to_kitchen/?id=${id}&currentStatus=${status}`)
+    axios.put(`/update_by_kitchen?id=${id}&currentStatus=${status}`)
       .then((response) => {
         this.fetchData()
         // console.log(response.data);
@@ -78,10 +78,11 @@ class Kitchen extends React.Component {
 
   fetchData = () => {
     console.log("fetch")
-    axios.get("/demo/kitchen")
+    axios.get("/each_kitchen?categoryType=FOOD&status=Done")
       .then((response) => {
         // console.log(isNaN(response.data[0].id))
         this.setState({data: response.data})
+          console.log(this.state.data)
       })
       .catch((error) => {
         console.log(error)
@@ -112,15 +113,15 @@ class Kitchen extends React.Component {
           return(
 
             <TableRow key={each.UUID}>
-              <TableRowColumn>{each.tableNumber}</TableRowColumn>
-              <TableRowColumn>{each.name}</TableRowColumn>
+              <TableRowColumn>{each.value}</TableRowColumn>
+              <TableRowColumn>{each.key.menu.name}</TableRowColumn>
               <TableRowColumn>
                 {/* {<DropDownMenuOpenImmediateExample />} */}
-                <MenuItem  primaryText="Waiting" onClick={() => this.updateItemStatus(each.id, "Waiting")}/>
-                <MenuItem  primaryText="Cooking" onClick={() => this.updateItemStatus(each.id, "Cooking")}/>
-                <MenuItem  primaryText="Done" onClick={() => this.updateItemStatus(each.id, "Done")}/>
+                <MenuItem  primaryText="Waiting" onClick={() => this.updateItemStatus(each.key.id, "Waiting")}/>
+                <MenuItem  primaryText="Cooking" onClick={() => this.updateItemStatus(each.key.id, "Cooking")}/>
+                <MenuItem  primaryText="Done" onClick={() => this.updateItemStatus(each.key.id, "Done")}/>
               </TableRowColumn>
-              <TableRowColumn>{each.currentStatus}</TableRowColumn>
+              <TableRowColumn>{each.key.currentStatus}</TableRowColumn>
               {/* <TableRowColumn> <RaisedButton onClick={() => console.log(each)}/> </TableRowColumn> */}
             </TableRow>
 

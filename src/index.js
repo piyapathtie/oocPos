@@ -14,10 +14,12 @@ import MainMenu from "./MainMenu";
 import Manage from "./Manage";
 import Kitchen from "./Kitchen";
 import tableNo from "./TableNo"
-import Dessert from "./Dessert"
+
 import Cashier from "./Cashier"
 import SaleReport from "./SaleReport"
 import Menu from "./Menu"
+import YourOrder from "./YourOrder"
+import DessertKitchen from "./DessertKitchen"
 
 
 function Path(){
@@ -26,15 +28,16 @@ function Path(){
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
         <Router>
           <div>
-            <Route path="/" exact component={App}/>
-            <Route path="/mainmenu" exact component={MainMenu} />
-            <Route path="/manage" exact component={Manage} />
-            <Route path="/kitchen" exact component={Kitchen} />
-            <Route path="/tableNo" exact component={tableNo} />
-            <Route path="/dessert" exact component={Dessert} />
-            <Route path="/cashier" exact component={Cashier} />
-            <Route path="/saleReport" exact component={SaleReport} />
-            <Route path="/menu" exact component={Menu} />
+              <Route path="/" exact component={App}/>
+              <Route path="/mainmenu" exact component={MainMenu} />
+              <Route path="/manage" exact component={Manage} />
+              <Route path="/kitchen" exact component={Kitchen} />
+              <Route path="/tableNo" exact component={tableNo} />
+              <Route path="/dessertkitchen" exact component={DessertKitchen} />
+              <Route path="/cashier" exact component={Cashier} />
+              <Route path="/saleReport" exact component={SaleReport} />
+              <Route path="/menu" exact component={Menu} />
+              <Route path="/yourorder" exact component={YourOrder} />
           </div>
         </Router>
       </MuiThemeProvider>

@@ -40,6 +40,7 @@ class EachMenu extends Component {
                     callback(null, JSON.parse(items))
                 }
             },
+
             function(data, callback) {
                 data.push({categoryType: categoryType,
                     name: name,
@@ -74,7 +75,7 @@ class EachMenu extends Component {
     }
 }
 
-export default class Dessert extends React.Component {
+export default class Rice extends React.Component {
 
     constructor(props) {
         super(props);
@@ -84,11 +85,12 @@ export default class Dessert extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("test/each_kitchen?categoryType=DESSERT")
+        axios.get("test/each_kitchen?categoryType=FOOD")
             .then((response) => {
                 // this.state.menus = response.data
-                this.setState({menus: response.data})
                 // console.log(response.data);
+
+                this.setState({menus: response.data})
                 console.log(this.state.menus)
             })
             .catch((error) => {

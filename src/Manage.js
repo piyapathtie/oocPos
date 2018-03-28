@@ -15,6 +15,9 @@ import AppBar from 'material-ui/AppBar';
 import BackIcon from "material-ui/svg-icons/hardware/keyboard-arrow-left"
 import AddIcon from "material-ui/svg-icons/content/add-circle"
 
+import Rice from './Rice'
+import Dessert from './Dessert'
+
 const styles = {
   button: {
     margin: 12,
@@ -80,14 +83,21 @@ class Manage extends Component {
   }
 
   sendRequest = () => {
+      // console.log(this.state.value)
     const data = new FormData();
     // const data = {name: this.state.name,
     //   price: this.state.email};
     data.append('name', this.state.name);
     data.append('price', this.state.price);
     data.append('file', this.state.file);
-    data.append('kindof', this.state.value);
-    console.log(data);
+    if(this.state.value === 1){
+        data.append('categoryType', "FOOD");
+    }
+    else{
+        data.append('categoryType', "DESSERT");
+    }
+
+    // console.log(data);
     axios.post("/test/upload", data)
       .then((response) => {
         this.setState({open: false});
@@ -168,9 +178,9 @@ class Manage extends Component {
     return (
       <div>
         <Bar onClick2={()=>this.props.history.push('/mainmenu')}
-          onClick3={this.handleOpen}
+             onClick3={this.handleOpen}
         />
-        {/* <RaisedButton label="Add Menu" onClick={this.handleOpen}/> */}
+
         <Dialog
           title="Create Menu"
           modal={true}
@@ -178,7 +188,7 @@ class Manage extends Component {
           actions={actions}
           titleStyle={{backgroundColor:"#D50000", color:"white"}}
           contentStyle={{ width: '50%',}}
-       >
+        >
          <br />
          {/* <RaisedButton
             // label="Choose an Image"
@@ -211,13 +221,19 @@ class Manage extends Component {
            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
          />
          <br />
-         <DropDownMenu
-           // style={{marginLeft:"100px"}}
-           value={this.state.value} onChange={this.handleChange}>
-          <MenuItem value={1} primaryText="Food" />
-          <MenuItem value={2} primaryText="Dessert" />
-        </DropDownMenu>
+         {/*<DropDownMenu>*/}
+               {/*style={{marginLeft:"100px"}}*/}
+               {/*value={this.state.value} onChange={this.handleChange}>*/}
+              {/*<MenuItem value={1} primaryText="Food" />*/}
+              {/*<MenuItem value={2} primaryText="Dessert" />*/}
+        {/*</DropDownMenu>*/}
+            <DropDownMenu value={this.state.value} onChange={this.handleChange}>
+                <MenuItem value={1} primaryText="Food" />
+                <MenuItem value={2} primaryText="Dessert" />
+            </DropDownMenu>
        </Dialog>
+          <Rice/>
+          <Dessert/>
       </div>
     );
   }
