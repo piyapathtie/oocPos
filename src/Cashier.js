@@ -11,6 +11,9 @@ import Dialog from 'material-ui/Dialog';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
+import Badge from 'material-ui/Badge';
+import AddMenu from 'material-ui/svg-icons/content/add-circle-outline';
+import MoneyIcon from 'material-ui/svg-icons/editor/monetization-on';
 
 
 import {
@@ -56,9 +59,20 @@ class Cashier extends React.Component {
             order: [],
             showCheckboxes: false,
         };
+        this.tick  = this.tick.bind(this)
+    }
+
+    tick = () => {
+        this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+        this.fetch();
     }
 
     componentDidMount() {
+        this.fetch();
+        this.interval = setInterval(this.tick, 5000);
+    }
+
+    fetch = () => {
         axios.get("/demo/get_table_2")
             .then((response) => {
                 this.setState({tables: response.data})
@@ -67,14 +81,25 @@ class Cashier extends React.Component {
             .catch((error) => {
                 console.log(error)
             })
-    }
+    };
 
 
     checkOut = (recid) =>{
         axios.get(`checkout?id=${recid}`)
             .then((response) => {
                 this.setState({order: response.data})
-                console.log(response.data)
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    };
+
+    setPaid = (recid) =>{
+        axios.post(`/setStatus?id=${recid}`)
+            .then((response) => {
+                console.log(response)
+                this.handleCloseDialog();
             })
             .catch((error) => {
                 console.log(error)
@@ -101,10 +126,10 @@ class Cashier extends React.Component {
               onClick={this.handleCloseDialog}
           />,
           <FlatButton
-              label="Submit"
+              label="Confirm Paid"
               primary={true}
-              keyboardFocused={true}
-              onClick={this.handleCloseDialog}
+              // keyboardFocused={true}
+              onClick={()=>this.setPaid(localStorage.getItem("BillID"))}
           />,
       ];
 
@@ -129,12 +154,18 @@ class Cashier extends React.Component {
                       />
                       <CardActions>
                           <FlatButton label="Check Out" onClick={()=>this.handleOpenDialog()}/>
-                          <FlatButton label="Action2" />
+                          <IconButton disabled={!("pending" === each.status)}>
+                              <MoneyIcon
+                                  color={"green"}
+                                  viewBox={'0 0 24 24'}
+                              />
+                          </IconButton>
                       </CardActions>
                   </Card>
               )
           })
           }
+
               <Card className="recipe-menu">
                   <CardHeader
                       title={"Take away"}
@@ -142,7 +173,9 @@ class Cashier extends React.Component {
                   />
                   <CardActions>
                       <FlatButton label="Action1" />
-                      <FlatButton label="Action2" />
+                      <IconButton >
+                          <MoneyIcon color={"green"} viewBox={'0 0 24 24'}/>
+                      </IconButton>
                   </CardActions>
               </Card>
 

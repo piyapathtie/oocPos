@@ -16,6 +16,8 @@ import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
+import { Redirect } from 'react-router';
+
 
 
 function Bar({onClickLeft}) {
@@ -45,6 +47,9 @@ class YourOrder extends React.Component {
             data: [],
             order: [],
             openDialog: false,
+            disable: false,
+            header: "Your Order",
+            redirect: false
         }
         this.tick  = this.tick.bind(this)
     }
@@ -70,7 +75,7 @@ class YourOrder extends React.Component {
     componentDidMount = () => {
         this.fetchData(this.state.recId);
         this.interval = setInterval(this.tick, 5000);
-    }
+    };
 
     componentWillUnmount = () =>{
         clearInterval(this.interval);
@@ -78,25 +83,28 @@ class YourOrder extends React.Component {
 
     fetchData = (recId) => {
         // console.log("fetch")
-
-        axios.get(`/each_table?recId=${recId}`)
+        axios.get(`/demo/get_table_3?recid=${recId}`)
             .then((response) => {
                 // console.log(response.data[0].menu.name)
-                this.setState({data: response.data})
-                // console.log(this.state.data)
+                console.log(response.data)
+                this.setState({data: response.data.orders})
+                if(response.data.status == "paid"){
+                    localStorage.setItem('BillID', 0);
+                    this.setState({redirect: true})
+                }
             })
             .catch((error) => {
                 console.log(error)
             })
-    }
+    };
 
     checkout = (recid) => {
         this.handleOpenDialog()
         console.log("click")
         axios.get(`checkout?id=${recid}`)
             .then((response) => {
-                this.setState({order: response.data})
                 console.log(response)
+                this.setState({order: response.data})
                 // this.setState({sum: response.data})
                 // console.log("try", response.data)
                 // console.log(this.state.sum)
@@ -104,19 +112,19 @@ class YourOrder extends React.Component {
             .catch((error) => {
                 console.log(error)
             })
-    }
+    };
 
-    addCashier = (table_id) => {
-        this.handleClose()
-        this.handleOpenthank()
-        axios.post(`/check_out_1/${String(table_id)}`)
+    sendToCashier = (recid) => {
+        this.setState({disable: true})
+        this.setState({header: "Thank you"})
+        axios.put(`/make_pending?id=${recid}`)
             .then((response) => {
                 console.log(response)
             })
             .catch((error) => {
                 console.log(error)
             })
-    }
+    };
 
     finish = (table_id) => {
         this.handleClosethank()
@@ -174,18 +182,23 @@ class YourOrder extends React.Component {
 
     render() {
 
+        if (this.state.redirect) {
+            return <Redirect to='/menu'/>;
+        }
+
         const {data, showCheckboxes, sum, order} = this.state
         const actions = [
             <FlatButton
                 label="Cancel"
                 primary={true}
                 onClick={this.handleCloseDialog}
+                disabled={this.state.disable}
             />,
             <FlatButton
-                label="Submit"
+                label="Confirm"
                 primary={true}
-                disabled={true}
-                onClick={this.handleCloseDialog}
+                onClick={()=>this.sendToCashier(localStorage.getItem("BillID"))}
+                disabled={this.state.disable}
             />,
         ];
 
@@ -203,9 +216,7 @@ class YourOrder extends React.Component {
                     <MenuItem onClick={() => this.props.history.push('/yourorder')}>Your Order</MenuItem>
                 </Drawer>
 
-                <Table
-                    // style={{ marginTop: "70px"}}
-                >
+                <Table>
                     <TableHeader displaySelectAll={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
 
                         <TableRow>
@@ -250,7 +261,7 @@ class YourOrder extends React.Component {
                 />
 
                 <Dialog
-                    title="Your Order"
+                    title={this.state.header}
                     actions={actions}
                     modal={false}
                     open={this.state.openDialog}
@@ -274,15 +285,25 @@ class YourOrder extends React.Component {
                         >
 
                             {order.map((each) => {
+                                // this.setState({sum: each.price})
                                 return(
                                     <TableRow>
                                         <TableRowColumn>{each.name}</TableRowColumn>
                                         <TableRowColumn>{each.amount}</TableRowColumn>
                                         <TableRowColumn>{each.price}</TableRowColumn>
+                                        {/*<TableRowColumn>{each.total_price}</TableRowColumn>*/}
                                     </TableRow>
                                 )
                             })
                             }
+
+                            <TableRow>
+                                <TableRowColumn> TOTAL </TableRowColumn>
+                                <TableRowColumn> </TableRowColumn>
+                                <TableRowColumn> sum </TableRowColumn>
+                                {/*<TableRowColumn>{each.total_price}</TableRowColumn>*/}
+                            </TableRow>
+
                         </TableBody>
                     </Table>
 

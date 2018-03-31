@@ -108,7 +108,7 @@ export default class Rice extends React.Component {
                             categoryType={menu.categoryType}
                             name={menu.name}
                             price={menu.price}
-                            image={"http://192.168.43.168:8080/test/image/" + menu.filepath}
+                            image={"http://192.168.1.174:8080/test/image/" + menu.filepath}
                             id={menu.id}
                         />)
                     })}

@@ -17,6 +17,8 @@ import AddIcon from "material-ui/svg-icons/content/add-circle"
 
 import Rice from './Rice'
 import Dessert from './Dessert'
+import {Tabs, Tab} from 'material-ui/Tabs';
+import SwipeableViews from 'react-swipeable-views';
 
 const styles = {
   button: {
@@ -57,7 +59,9 @@ function Bar({onClick2, onClick3}) {
               <BackIcon/>
             </IconButton>}
           iconElementRight={
-            <IconButton onClick={onClick3}>
+            <IconButton
+                tooltip="Add Menu"
+                onClick={onClick3}>
               <AddIcon/>
             </IconButton>}
           style={{backgroundColor: "#D50000"}}
@@ -157,6 +161,12 @@ class Manage extends Component {
     reader.readAsDataURL(file)
   };
 
+    handleChangeTab = (value) => {
+        this.setState({
+            slideIndex: value,
+        });
+    };
+
 
   handleChange = (event, index, value) => this.setState({value});
 
@@ -177,9 +187,25 @@ class Manage extends Component {
     ];
     return (
       <div>
-        <Bar onClick2={()=>this.props.history.push('/mainmenu')}
-             onClick3={this.handleOpen}
-        />
+          <div style={{position: "fixed", width:'100%', zIndex: 10000,}}>
+              <Bar onClick2={()=>this.props.history.push('/mainmenu')}
+                   onClick3={this.handleOpen}
+              />
+
+              <Tabs
+                  onChange={this.handleChange}
+                  value={this.state.slideIndex}
+                  inkBarStyle={{backgroundColor: "#77b26b"}}
+              >
+                  <Tab label="Food" value={0}
+                       style={{backgroundColor: "#e53935"}}
+                  />
+                  <Tab label="Dessert" value={1}
+                       style={{backgroundColor: "#e53935"}}
+                  />
+              </Tabs>
+
+          </div>
 
         <Dialog
           title="Create Menu"
@@ -187,15 +213,9 @@ class Manage extends Component {
           open={this.state.open}
           actions={actions}
           titleStyle={{backgroundColor:"#D50000", color:"white"}}
-          contentStyle={{ width: '50%',}}
+          contentStyle={{ width: '30%',}}
         >
          <br />
-         {/* <RaisedButton
-            // label="Choose an Image"
-            labelPosition="before"
-            style={styles.button}
-            containerElement="label"
-          > */}
             <input type="file"
               style={{marginLeft:"20px"}}
               // style={styles.exampleImageInput}
@@ -221,19 +241,23 @@ class Manage extends Component {
            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
          />
          <br />
-         {/*<DropDownMenu>*/}
-               {/*style={{marginLeft:"100px"}}*/}
-               {/*value={this.state.value} onChange={this.handleChange}>*/}
-              {/*<MenuItem value={1} primaryText="Food" />*/}
-              {/*<MenuItem value={2} primaryText="Dessert" />*/}
-        {/*</DropDownMenu>*/}
             <DropDownMenu value={this.state.value} onChange={this.handleChange}>
                 <MenuItem value={1} primaryText="Food" />
                 <MenuItem value={2} primaryText="Dessert" />
             </DropDownMenu>
        </Dialog>
-          <Rice/>
-          <Dessert/>
+
+          <SwipeableViews
+              index={this.state.slideIndex}
+              onChangeIndex={this.handleChangeTab}
+          >
+              <div style={styles.slide}>
+                  <Rice/>
+              </div>
+              <div style={styles.slide}>
+                  <Dessert/>
+              </div>
+          </SwipeableViews>
       </div>
     );
   }

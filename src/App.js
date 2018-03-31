@@ -8,6 +8,7 @@ import authentication from './store.js'
 
 function UsernameField({onChange, onKeyPress}){
   return (<TextField
+      fullWidth={true}
     hintText="Username"
     floatingLabelText="Username"
     onChange={(e) => onChange(e.target.value)}
@@ -17,6 +18,7 @@ function UsernameField({onChange, onKeyPress}){
 
 function PasswordField({onChange, onKeyPress}){
   return (<TextField
+      fullWidth={true}
     hintText="Password Field"
     floatingLabelText="Password"
     type="password"
@@ -27,8 +29,9 @@ function PasswordField({onChange, onKeyPress}){
 
 function LoginButton({onClick}){
   return (<RaisedButton label="Login"
-    secondary={true}
-    onClick={onClick}
+                        fullWidth={true}
+                        secondary={true}
+                        onClick={onClick}
   />)
 }
 
@@ -51,16 +54,18 @@ class App extends Component {
 
       axios.post("/login", urlencode(loginParams))
         .then((response) => {
-          authentication.authen = true
-          authentication.role = response.data.role
-          console.log(authentication);
-          this.props.history.push('/mainmenu')
+          // authentication.authen = true
+          // authentication.role = response.data.role
+          // console.log(authentication);
+            console.log("before");
+          this.props.history.push('/mainmenu');
+            console.log("after");
         })
         .catch((error) => {
-          console.log(error)
+          console.log(error);
           console.log('login failed');
           this.setState({show: true})
-          console.log(authentication);
+          // console.log(authentication);
         })
   }
 
@@ -99,9 +104,10 @@ class App extends Component {
                         onKeyPress={this.onEnterpress}
                     />
                     <br />
-                    <div class="right">
+                <br />
+
                         <LoginButton onClick={this.sendRequest}/>
-                    </div>
+
                 {/*</div>*/}
             </div>
         </div>
