@@ -1,12 +1,7 @@
-import Axios from "axios";
+import axios from "axios";
 
 
-export default Axios.create({
-  baseURL: 'http://192.168.1.174:8080',
-  withCredentials: true,
-  headers: {
-    common: {
-      Accept: 'application/json'
-    },
-  }
+export default axios.create({
+  baseURL: 'http://localhost:3000',
+  withCredentials: true
 })

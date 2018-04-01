@@ -29,11 +29,10 @@ class MainMenu extends Component {
 
   render() {
 
-    // if (!authentication.authen) {
-    //   return <Redirect to='/'/>;
-    // }
+    if (localStorage.getItem("login") != true) {
+      return <Redirect to='/'/>;
+    }
 
-    console.log(authentication)
 
     return (
       <div>

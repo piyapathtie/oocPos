@@ -15,8 +15,8 @@ import AppBar from 'material-ui/AppBar';
 import BackIcon from "material-ui/svg-icons/hardware/keyboard-arrow-left"
 import AddIcon from "material-ui/svg-icons/content/add-circle"
 
-import Rice from './Rice'
-import Dessert from './Dessert'
+import RiceCanDelete from './RiceCanDelete'
+import DessertCanDelete from './DessertCanDelete'
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 
@@ -192,19 +192,6 @@ class Manage extends Component {
                    onClick3={this.handleOpen}
               />
 
-              <Tabs
-                  onChange={this.handleChange}
-                  value={this.state.slideIndex}
-                  inkBarStyle={{backgroundColor: "#77b26b"}}
-              >
-                  <Tab label="Food" value={0}
-                       style={{backgroundColor: "#e53935"}}
-                  />
-                  <Tab label="Dessert" value={1}
-                       style={{backgroundColor: "#e53935"}}
-                  />
-              </Tabs>
-
           </div>
 
         <Dialog
@@ -247,17 +234,9 @@ class Manage extends Component {
             </DropDownMenu>
        </Dialog>
 
-          <SwipeableViews
-              index={this.state.slideIndex}
-              onChangeIndex={this.handleChangeTab}
-          >
-              <div style={styles.slide}>
-                  <Rice/>
-              </div>
-              <div style={styles.slide}>
-                  <Dessert/>
-              </div>
-          </SwipeableViews>
+          <RiceCanDelete/>
+          <DessertCanDelete/>
+
       </div>
     );
   }

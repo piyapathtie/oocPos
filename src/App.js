@@ -52,19 +52,19 @@ class App extends Component {
         password: this.state.password
       }
 
+      console.log(urlencode(loginParams))
       axios.post("/login", urlencode(loginParams))
         .then((response) => {
           // authentication.authen = true
           // authentication.role = response.data.role
-          // console.log(authentication);
-            console.log("before");
-          this.props.history.push('/mainmenu');
-            console.log("after");
+            console.log(response.data.role);
+            localStorage.setItem("login", true)
+            localStorage.setItem("role", response.data.role)
+            this.props.history.push('/mainmenu');
         })
         .catch((error) => {
-          console.log(error);
-          console.log('login failed');
-          this.setState({show: true})
+            console.log("err")
+          // this.setState({show: true})
           // console.log(authentication);
         })
   }
@@ -89,8 +89,8 @@ class App extends Component {
   render() {
     return (
         <div>
-            <div class="center">
-                {/*<div class="cen2">*/}
+            <div className="center">
+                {/*<div className="cen2">*/}
                     <h4> LOGIN TO ACCESS YOUR RESTAURANT POS</h4>
                     <br/>
                     <div style={{ display: (this.state.show ? 'block' : 'none'), color: "red" }}>Wrong username or password</div>

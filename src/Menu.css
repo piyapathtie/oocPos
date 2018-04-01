@@ -43,6 +43,10 @@ input{
 	background-color: #579b55;
 }
 
+.btnStyle4{
+	background-color: #d50000;
+}
+
 .btnStyle3:hover{
 	background-color: #F2D388;
 }

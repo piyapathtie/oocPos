@@ -103,7 +103,7 @@ class YourOrder extends React.Component {
         console.log("click")
         axios.get(`checkout?id=${recid}`)
             .then((response) => {
-                console.log(response)
+                console.log(response.data)
                 this.setState({order: response.data})
                 // this.setState({sum: response.data})
                 // console.log("try", response.data)
@@ -297,12 +297,12 @@ class YourOrder extends React.Component {
                             })
                             }
 
-                            <TableRow>
-                                <TableRowColumn> TOTAL </TableRowColumn>
-                                <TableRowColumn> </TableRowColumn>
-                                <TableRowColumn> sum </TableRowColumn>
-                                {/*<TableRowColumn>{each.total_price}</TableRowColumn>*/}
-                            </TableRow>
+                            {/*<TableRow>*/}
+                                {/*<TableRowColumn> TOTAL </TableRowColumn>*/}
+                                {/*<TableRowColumn> </TableRowColumn>*/}
+                                {/*<TableRowColumn> sum </TableRowColumn>*/}
+                                {/*/!*<TableRowColumn>{each.total_price}</TableRowColumn>*!/*/}
+                            {/*</TableRow>*/}
 
                         </TableBody>
                     </Table>

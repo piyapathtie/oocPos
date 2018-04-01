@@ -22,49 +22,22 @@ class EachMenu extends Component {
     }
 
     _buttonClick = () => {
-
-        // Dont do this style!!
-        const {categoryType, name, price, id} = this.state;
-        waterfall([
-            function(callback) {
-
-                callback(null, localStorage.getItem("Cart"));
-
-            },
-            function(items, callback) {
-                // console.log(items === null)
-                if (items === null) {
-                    var arr = []
-                    callback(null, arr)
-                }else {
-                    callback(null, JSON.parse(items))
-                }
-            },
-            function(data, callback) {
-                data.push({categoryType: categoryType,
-                    name: name,
-                    price: price,
-                    // id: parseInt(localStorage.getItem("tableID")),
-                    // status: "Waiting",
-                    id: id,
-                });
-                callback(null, data);
-            },
-            function(data, callback) {
-                console.log(data)
-                console.log(JSON.stringify(data))
-                localStorage.setItem("Cart", JSON.stringify(data))
-                callback(null, true);
-            }
-        ], function (err, result) {
-        });
-
-    }
+        axios.put(`/test/del_menu?id=${this.state.id}`)
+            .then((response) => {
+                // this.state.menus = response.data
+                // console.log(response.data);
+                console.log(response)
+                this.setState({dates: response.data})
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    };
 
     render(){
         return (
             <div className="recipe">
-                <a className="btnStyle3 btnStyle addToCart" id="addToCart" onClick={() =>  this._buttonClick()}>Add to Cart</a>
+                <a className="btnStyle4 btnStyle addToCart" id="addToCart" onClick={() =>  this._buttonClick()}>Delete</a>
                 <div className="obj" id={this.state.name} >
                     <div> <img src={this.state.img}/> </div>
                     <div> <h4>{this.state.name}</h4> - {this.state.price} </div>
@@ -74,7 +47,7 @@ class EachMenu extends Component {
     }
 }
 
-export default class Dessert extends React.Component {
+export default class DessertCanDelete extends React.Component {
 
     constructor(props) {
         super(props);
