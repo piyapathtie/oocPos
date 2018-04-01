@@ -12,31 +12,72 @@ import { Redirect } from 'react-router'
 // import './App.css';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import urlencode from "form-urlencoded";
+import axios from "./AxiosConfiguration";
 
 
-function Bar() {
+function Bar(onClick) {
     return(
         <AppBar
           title="Main Menu"
           showMenuIconButton={false}
           style={{backgroundColor: "#D50000"}}
+          iconElementRight={<LogOutButton onClick={onClick}/>}
         />
   );
+}
+
+function LogOutButton(onClick) {
+    return(
+        <RaisedButton
+            label="Log Out"
+            primary={true}
+            onClick={onClick}
+        />
+    );
 }
 
 
 class MainMenu extends Component {
 
-  render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+    }
 
-    if (localStorage.getItem("login") != true) {
+    sendRequest = () => {
+        axios.post("/logout")
+            .then((response) => {
+                console.log("log out")
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    };
+
+  render() {
+      console.log(localStorage.getItem("login"))
+
+    if (localStorage.getItem("login") != "true") {
       return <Redirect to='/'/>;
     }
 
 
     return (
       <div>
-        <Bar/>
+          <AppBar
+              title="Main Menu"
+              showMenuIconButton={false}
+              style={{backgroundColor: "#D50000"}}
+              iconElementRight={<RaisedButton
+                  label="Log Out"
+                  primary={true}
+                  onClick={this.sendRequest}
+              />}
+          />
         <div class="center">
           <h4> PLEASE VERIFY YOUR DEVICE </h4>
           <List>
