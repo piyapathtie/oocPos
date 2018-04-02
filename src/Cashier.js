@@ -74,7 +74,7 @@ class Cashier extends React.Component {
     }
 
     fetch = () => {
-        axios.get("/demo/get_table_2")
+        axios.get("/demo/show_cashier")
             .then((response) => {
                 this.setState({tables: response.data})
                 console.log(this.state.tables)
