@@ -132,10 +132,12 @@ class YourOrder extends React.Component {
     }
 
 
-    remove = (uuid) => {
-        axios.put(`/check_cancel?id=${uuid}`)
+    remove = () => {
+        console.log(this.state.orderid)
+        axios.put(`/check_cancel?id=${this.state.orderid}`)
             .then((response) => {
                 console.log(response.data)
+                this.setState({opencancel: false})
                 // if(response.data === false){
                 //     this.handleOpencancel()
                 // }
@@ -208,7 +210,7 @@ class YourOrder extends React.Component {
             <FlatButton
                 label="Yes"
                 primary={true}
-                onClick={this.remove(this.orderid)}
+                onClick={() => this.remove()}
             />,
             <FlatButton
                 label="No"
@@ -311,7 +313,7 @@ class YourOrder extends React.Component {
                                 )
                             })
                             }
-                            
+
 
                         </TableBody>
                     </Table>

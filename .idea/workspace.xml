@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcf65c42-c214-4283-bd9c-125c1a244795" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change beforePath="$PROJECT_DIR$/src/Dessert.js" afterPath="$PROJECT_DIR$/src/Dessert.js" />
-      <change beforePath="$PROJECT_DIR$/src/MainMenu.js" afterPath="$PROJECT_DIR$/src/MainMenu.js" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.js" afterPath="$PROJECT_DIR$/src/Menu.js" />
-      <change beforePath="$PROJECT_DIR$/src/Rice.js" afterPath="$PROJECT_DIR$/src/Rice.js" />
-      <change beforePath="$PROJECT_DIR$/src/TableNo.js" afterPath="$PROJECT_DIR$/src/TableNo.js" />
       <change beforePath="$PROJECT_DIR$/src/YourOrder.js" afterPath="$PROJECT_DIR$/src/YourOrder.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,8 +73,8 @@
       <file leaf-file-name="YourOrder.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/YourOrder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="313" column="28" lean-forward="false" selection-start-line="313" selection-start-column="28" selection-end-line="313" selection-end-column="28" />
+            <state relative-caret-position="331">
+              <caret line="142" column="20" lean-forward="true" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="20" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -160,10 +154,10 @@
       <find>get_tabl</find>
       <find>get_ta</find>
       <find>get_</find>
-      <find>check</find>
       <find>handleOpencancel</find>
       <find>actions</find>
       <find>remove</find>
+      <find>check</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -374,12 +368,12 @@
       <workItem from="1521636849425" duration="118000" />
       <workItem from="1521638118161" duration="72653000" />
       <workItem from="1522340010969" duration="567000" />
-      <workItem from="1522423579397" duration="28763000" />
+      <workItem from="1522423579397" duration="29362000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102101000" />
+    <option name="totallyTimeSpent" value="102700000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -847,8 +841,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/YourOrder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="313" column="28" lean-forward="false" selection-start-line="313" selection-start-column="28" selection-end-line="313" selection-end-column="28" />
+        <state relative-caret-position="331">
+          <caret line="142" column="20" lean-forward="true" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="20" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
