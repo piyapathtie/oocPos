@@ -47,6 +47,21 @@ class MainMenu extends Component {
         };
     }
 
+    componentDidMount() {
+        // var loginParams = {
+        //     username: "staff"
+        // }
+
+        axios.get(`/user/whoami`)
+            .then((response) => {
+                console.log("this is check")
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     sendRequest = () => {
         axios.post("/logout")
             .then((response) => {

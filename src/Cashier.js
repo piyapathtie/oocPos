@@ -58,6 +58,7 @@ class Cashier extends React.Component {
             openDialog: false,
             order: [],
             showCheckboxes: false,
+            recid: 0,
         };
         this.tick  = this.tick.bind(this)
     }
@@ -106,8 +107,9 @@ class Cashier extends React.Component {
             })
     };
 
-    handleOpenDialog = () => {
+    handleOpenDialog = (recid) => {
         this.setState({openDialog: true});
+        this.setState({recid: recid})
         this.checkOut(localStorage.getItem("BillID"));
     };
 
@@ -129,7 +131,7 @@ class Cashier extends React.Component {
               label="Confirm Paid"
               primary={true}
               // keyboardFocused={true}
-              onClick={()=>this.setPaid(localStorage.getItem("BillID"))}
+              onClick={()=>this.setPaid(this.state.recid)}
           />,
       ];
 
@@ -153,7 +155,7 @@ class Cashier extends React.Component {
                           subtitle={"Bill: " + each.id}
                       />
                       <CardActions>
-                          <FlatButton label="Check Out" onClick={()=>this.handleOpenDialog()}/>
+                          <FlatButton label="Check Out" onClick={()=>this.handleOpenDialog(each.id)}/>
                           <IconButton disabled={!("pending" === each.status)}>
                               <MoneyIcon
                                   color={"green"}
@@ -179,29 +181,6 @@ class Cashier extends React.Component {
                   </CardActions>
               </Card>
 
-              <Card className="recipe-menu">
-                  <CardHeader
-                      title={"Take away"}
-                      subtitle="Bill: "
-                  />
-                  <CardActions>
-                      <FlatButton label="Action1" />
-                      <FlatButton label="Action2" />
-                  </CardActions>
-              </Card>
-
-              <Card className="recipe-menu">
-                  <CardHeader
-                      title={"Take away"}
-                      subtitle="Bill: "
-                      // actAsExpander={true}
-                      // showExpandableButton={true}
-                  />
-                  <CardActions>
-                      <FlatButton label="Action1" />
-                      <FlatButton label="Action2" />
-                  </CardActions>
-              </Card>
           </div>
 
           <Dialog

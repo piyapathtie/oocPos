@@ -57,13 +57,13 @@ class App extends Component {
         .then((response) => {
           // authentication.authen = true
           // authentication.role = response.data.role
-            console.log(response.data.role);
+            console.log(response.data);
             localStorage.setItem("login", true)
             localStorage.setItem("role", response.data.role)
             this.props.history.push('/mainmenu');
         })
         .catch((error) => {
-            console.log("err")
+            console.log(error)
           // this.setState({show: true})
           // console.log(authentication);
         })
