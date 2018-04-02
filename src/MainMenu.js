@@ -59,6 +59,7 @@ class MainMenu extends Component {
             })
             .catch((error) => {
                 console.log(error)
+                this.props.history.push('/')
             })
     }
 
@@ -70,6 +71,7 @@ class MainMenu extends Component {
             })
             .catch((error) => {
                 console.log(error)
+                this.props.history.push('/')
             })
     };
 

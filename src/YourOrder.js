@@ -49,7 +49,8 @@ class YourOrder extends React.Component {
             openDialog: false,
             disable: false,
             header: "Your Order",
-            redirect: false
+            redirect: false,
+            orderid: 0,
         }
         this.tick  = this.tick.bind(this)
     }
@@ -66,8 +67,6 @@ class YourOrder extends React.Component {
 
 
     tick = () => {
-        // console.log("tick")
-        // this.fetchData(String(localStorage.getItem("tableID")))
         this.setState({secondsElapsed: this.state.secondsElapsed + 1});
         this.fetchData(this.state.recId);
     }
@@ -137,12 +136,12 @@ class YourOrder extends React.Component {
         axios.put(`/check_cancel?id=${uuid}`)
             .then((response) => {
                 console.log(response.data)
-                if(response.data === false){
-                    this.handleOpencancel()
-                }
-                else{
-                    this.forceUpdate()
-                }
+                // if(response.data === false){
+                //     this.handleOpencancel()
+                // }
+                // else{
+                //     this.forceUpdate()
+                // }
                 // this.fetchData(String(localStorage.getItem("tableID")));
                 // console.log(response)
             })
@@ -168,13 +167,16 @@ class YourOrder extends React.Component {
     //     this.setState({openthank: false});
     // };
     //
-    // handleOpencancel = () => {
-    //     this.setState({opencancel: true});
-    // };
-    //
-    // handleClosecancel = () => {
-    //     this.setState({opencancel: false});
-    // };
+
+    handleOpencancel = (uuid) => {
+        this.setState({opencancel: true,
+            orderid: uuid
+        });
+    };
+
+    handleClosecancel = () => {
+        this.setState({opencancel: false});
+    };
 
     handleLeftToggle = () =>{
         this.setState({openLeft: !this.state.openLeft})
@@ -199,6 +201,19 @@ class YourOrder extends React.Component {
                 primary={true}
                 onClick={()=>this.sendToCashier(localStorage.getItem("BillID"))}
                 disabled={this.state.disable}
+            />,
+        ];
+
+        const confirmbox = [
+            <FlatButton
+                label="Yes"
+                primary={true}
+                onClick={this.remove(this.orderid)}
+            />,
+            <FlatButton
+                label="No"
+                primary={true}
+                onClick={this.handleClosecancel}
             />,
         ];
 
@@ -232,13 +247,13 @@ class YourOrder extends React.Component {
                         {data.map((each) => {
                             return(
 
-                                <TableRow key={each.UUID}>
+                                <TableRow >
                                     {/* <TableRowColumn>{each.id}</TableRowColumn> */}
                                     <TableRowColumn>{each.menu.name}</TableRowColumn>
                                     <TableRowColumn>{each.currentStatus}</TableRowColumn>
                                     <TableRowColumn>
 
-                                        <IconButton disabled={!(each.currentStatus === "Waiting")} onClick={() => this.remove(each.id)}>
+                                        <IconButton disabled={!(each.currentStatus === "Waiting")} onClick={() => this.handleOpencancel(each.id)}>
                                             <Cancel />
                                         </IconButton>
 
@@ -296,17 +311,20 @@ class YourOrder extends React.Component {
                                 )
                             })
                             }
-
-                            {/*<TableRow>*/}
-                                {/*<TableRowColumn> TOTAL </TableRowColumn>*/}
-                                {/*<TableRowColumn> </TableRowColumn>*/}
-                                {/*<TableRowColumn> sum </TableRowColumn>*/}
-                                {/*/!*<TableRowColumn>{each.total_price}</TableRowColumn>*!/*/}
-                            {/*</TableRow>*/}
+                            
 
                         </TableBody>
                     </Table>
 
+                </Dialog>
+
+                <Dialog
+                    title={"Confirm Cancel"}
+                    actions={confirmbox}
+                    modal={false}
+                    open={this.state.opencancel}
+                >
+                    Do you want to cancel this order?
                 </Dialog>
 
             </div>

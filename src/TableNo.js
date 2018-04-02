@@ -17,11 +17,8 @@ function Bar({onClick}) {
     return(
         <AppBar
           title="Table No"
-          iconElementLeft={
-            <IconButton onClick={onClick}>
-              <BackIcon/>
-            </IconButton>}
           style={{backgroundColor: "#D50000"}}
+          showMenuIconButton={false}
         />
     );
 }

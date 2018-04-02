@@ -55,12 +55,16 @@ class App extends Component {
       console.log(urlencode(loginParams))
       axios.post("/login", urlencode(loginParams))
         .then((response) => {
-          // authentication.authen = true
-          // authentication.role = response.data.role
-            console.log(response.data);
-            localStorage.setItem("login", true)
             localStorage.setItem("role", response.data.role)
-            this.props.history.push('/mainmenu');
+            console.log(response.data);
+
+            if (response.data.role === "table"){
+                this.props.history.push('/tableNo');
+            }
+            else{
+                this.props.history.push('/mainmenu');
+            }
+
         })
         .catch((error) => {
             console.log(error)

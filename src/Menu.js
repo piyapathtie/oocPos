@@ -116,6 +116,14 @@ export default class Menu extends React.Component {
         if(localStorage.getItem("BillID") == 0){
             this.handleOpen()
         }
+        axios.get(`/user/whoami`)
+            .then((response) => {
+                console.log("this is check")
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
 
