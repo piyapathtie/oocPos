@@ -55,8 +55,20 @@ class DessertKitchen extends React.Component {
     }
 
     componentDidMount() {
+        axios.get(`/user/whoami`)
+            .then((response) => {
+                console.log("this is check")
+                console.log(response.data);
+                if(response.data === "table"){
+                    this.props.history.push('/menu')
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+                this.props.history.push('/')
+            });
+
         this.fetchData()
-        // this.tick()
         this.interval = setInterval(this.fetchData, 5000);
     }
 

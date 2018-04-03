@@ -53,6 +53,9 @@ class MainMenu extends Component {
             .then((response) => {
                 console.log("this is check")
                 console.log(response.data);
+                if(response.data === "table"){
+                    this.props.history.push('/menu')
+                }
                 this.setState({role: response.data})
             })
             .catch((error) => {

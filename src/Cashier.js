@@ -73,6 +73,9 @@ class Cashier extends React.Component {
             .then((response) => {
                 console.log("this is check")
                 console.log(response.data);
+                if(response.data === "table"){
+                    this.props.history.push('/menu')
+                }
             })
             .catch((error) => {
                 console.log(error)
