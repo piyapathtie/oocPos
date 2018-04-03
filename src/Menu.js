@@ -65,20 +65,6 @@ function DrawerRight(){
   );
 }
 
-function ButtonCart(check){
-    return(
-        <RaisedButton
-            label="Order"
-            // disabled={check}
-            secondary={true}
-            style = {styles.button}
-            // style={{margin: 12, bottom: 0}}
-            // labelStyle={{top: "15px", fontSize: "18px"}}
-            fullWidth={true}
-            // style={{minWidth: "100%", height: "50px",}}
-        />
-    );
-}
 
 
 function getIndex(value, arr) {
@@ -112,9 +98,14 @@ export default class Menu extends React.Component {
   };
 
     componentDidMount() {
-        if(localStorage.getItem("BillID") == 0){
-            this.handleOpen()
-        }
+        axios.get(`/demo/check_login?table=${localStorage.getItem("tableID")}`)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+
         axios.get(`/user/whoami`)
             .then((response) => {
                 console.log("this is check")
@@ -124,6 +115,11 @@ export default class Menu extends React.Component {
                 console.log(error)
                 this.props.history.push('/')
             })
+
+        if(localStorage.getItem("BillID") == 0){
+            this.handleOpen()
+        }
+
     }
 
 
