@@ -72,6 +72,15 @@ class YourOrder extends React.Component {
     }
 
     componentDidMount = () => {
+        axios.get(`/user/whoami`)
+            .then((response) => {
+                console.log("this is check")
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+                this.props.history.push('/')
+            })
         this.fetchData(this.state.recId);
         this.interval = setInterval(this.tick, 5000);
     };

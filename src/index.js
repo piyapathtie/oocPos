@@ -20,6 +20,7 @@ import SaleReport from "./SaleReport"
 import Menu from "./Menu"
 import YourOrder from "./YourOrder"
 import DessertKitchen from "./DessertKitchen"
+import ManageTable from "./ManageTable";
 
 
 function Path(){
@@ -38,6 +39,7 @@ function Path(){
               <Route path="/saleReport" exact component={SaleReport} />
               <Route path="/menu" exact component={Menu} />
               <Route path="/yourorder" exact component={YourOrder} />
+              <Route path="/managetable" exact component={ManageTable} />
           </div>
         </Router>
       </MuiThemeProvider>

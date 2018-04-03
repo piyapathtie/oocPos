@@ -17,26 +17,7 @@ import urlencode from "form-urlencoded";
 import axios from "./AxiosConfiguration";
 
 
-function Bar(onClick) {
-    return(
-        <AppBar
-          title="Main Menu"
-          showMenuIconButton={false}
-          style={{backgroundColor: "#D50000"}}
-          iconElementRight={<LogOutButton onClick={onClick}/>}
-        />
-  );
-}
 
-function LogOutButton(onClick) {
-    return(
-        <RaisedButton
-            label="Log Out"
-            primary={true}
-            onClick={onClick}
-        />
-    );
-}
 
 
 class MainMenu extends Component {
@@ -92,12 +73,13 @@ class MainMenu extends Component {
                   label="Log Out"
                   primary={true}
                   onClick={this.sendRequest}
+                  buttonStyle={{backgroundColor:"#e99833"}}
               />}
           />
         <div class="center">
           <h4> PLEASE VERIFY YOUR DEVICE </h4>
           <List>
-            <ListItem primaryText="Table" leftIcon={<ForTable />} onClick={()=>this.props.history.push('/tableNo')}/>
+            <ListItem primaryText="Manage Table" leftIcon={<ForTable />} onClick={()=>this.props.history.push('/managetable')}/>
             <ListItem primaryText="Kitchen" leftIcon={<ForKit />} onClick={()=>this.props.history.push('/kitchen')}/>
             <ListItem primaryText="Dessert Kitchen" leftIcon={<Fordessertkit />} onClick={()=>this.props.history.push('/dessertkitchen')}/>
             <ListItem primaryText="Cashier" leftIcon={<ForCashier />} onClick={()=>this.props.history.push('/cashier')}/>

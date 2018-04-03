@@ -112,7 +112,6 @@ export default class Menu extends React.Component {
   };
 
     componentDidMount() {
-        // console.log(localStorage.getItem("BillID") == 0)
         if(localStorage.getItem("BillID") == 0){
             this.handleOpen()
         }
@@ -123,6 +122,7 @@ export default class Menu extends React.Component {
             })
             .catch((error) => {
                 console.log(error)
+                this.props.history.push('/')
             })
     }
 

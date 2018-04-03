@@ -35,6 +35,18 @@ class tableNo extends React.Component {
     }
   }
 
+    componentDidMount() {
+        axios.get(`/user/whoami`)
+            .then((response) => {
+                console.log("this is check")
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+                this.props.history.push('/')
+            })
+    }
+
   checkexistedtable = (table) => {
     axios.get(`/demo/status_table?table=${table}`)
       .then((response) => {
