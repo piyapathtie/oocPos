@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcf65c42-c214-4283-bd9c-125c1a244795" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TableNo.js" afterPath="$PROJECT_DIR$/src/TableNo.js" />
-      <change beforePath="$PROJECT_DIR$/src/YourOrder.js" afterPath="$PROJECT_DIR$/src/YourOrder.js" />
+      <change beforePath="$PROJECT_DIR$/src/Dessert.js" afterPath="$PROJECT_DIR$/src/Dessert.js" />
+      <change beforePath="$PROJECT_DIR$/src/DessertCanDelete.js" afterPath="$PROJECT_DIR$/src/DessertCanDelete.js" />
+      <change beforePath="$PROJECT_DIR$/src/Rice.js" afterPath="$PROJECT_DIR$/src/Rice.js" />
+      <change beforePath="$PROJECT_DIR$/src/RiceCanDelete.js" afterPath="$PROJECT_DIR$/src/RiceCanDelete.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TableNo.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TableNo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TableNo.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="433">
@@ -37,13 +39,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Cashier.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cashier.js">
+      <file leaf-file-name="Rice.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Rice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="69" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
+            <state relative-caret-position="302">
+              <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RiceCanDelete.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RiceCanDelete.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="43" column="93" lean-forward="true" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="93" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Menu.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Menu.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="49" column="13" lean-forward="false" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DessertCanDelete.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DessertCanDelete.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="485">
+              <caret line="41" column="21" lean-forward="false" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,6 +110,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Dessert.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Dessert.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="68" column="21" lean-forward="false" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ManageTable.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ManageTable.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -88,42 +136,6 @@
                 <marker date="1522766811000" expanded="true" signature="3218:3325" ph="..." />
                 <marker date="1522766811000" expanded="true" signature="3371:3528" ph="..." />
                 <marker date="1522766811000" expanded="true" signature="3449:3514" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SaleReport.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SaleReport.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="66" column="16" lean-forward="true" selection-start-line="66" selection-start-column="16" selection-end-line="68" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Manage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Manage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="93" column="16" lean-forward="true" selection-start-line="93" selection-start-column="16" selection-end-line="95" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dessert.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Dessert.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1620">
-              <caret line="108" column="56" lean-forward="false" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -176,13 +188,9 @@
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/SaleReport.css" />
         <option value="$PROJECT_DIR$/src/Menu.css" />
-        <option value="$PROJECT_DIR$/src/DessertCanDelete.js" />
-        <option value="$PROJECT_DIR$/src/RiceCanDelete.js" />
         <option value="$PROJECT_DIR$/src/AxiosConfiguration.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/Rice.js" />
-        <option value="$PROJECT_DIR$/src/Dessert.js" />
         <option value="$PROJECT_DIR$/src/SaleReport.js" />
         <option value="$PROJECT_DIR$/src/Manage.js" />
         <option value="$PROJECT_DIR$/src/Cashier.js" />
@@ -194,6 +202,10 @@
         <option value="$PROJECT_DIR$/src/Menu.js" />
         <option value="$PROJECT_DIR$/src/YourOrder.js" />
         <option value="$PROJECT_DIR$/src/TableNo.js" />
+        <option value="$PROJECT_DIR$/src/RiceCanDelete.js" />
+        <option value="$PROJECT_DIR$/src/DessertCanDelete.js" />
+        <option value="$PROJECT_DIR$/src/Rice.js" />
+        <option value="$PROJECT_DIR$/src/Dessert.js" />
       </list>
     </option>
   </component>
@@ -371,12 +383,12 @@
       <workItem from="1521636849425" duration="118000" />
       <workItem from="1521638118161" duration="72653000" />
       <workItem from="1522340010969" duration="567000" />
-      <workItem from="1522423579397" duration="38842000" />
+      <workItem from="1522423579397" duration="40092000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112180000" />
+    <option name="totallyTimeSpent" value="113430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -666,34 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Menu.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="46" column="29" lean-forward="false" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DessertCanDelete.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="24" column="17" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RiceCanDelete.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -725,26 +709,6 @@
         <state relative-caret-position="105">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Rice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
-          <caret line="110" column="56" lean-forward="false" selection-start-line="110" selection-start-column="56" selection-end-line="110" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dessert.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="108" column="56" lean-forward="false" selection-start-line="108" selection-start-column="56" selection-end-line="108" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -868,6 +832,54 @@
         <state relative-caret-position="433">
           <caret line="59" column="46" lean-forward="false" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Menu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="49" column="13" lean-forward="false" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RiceCanDelete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="43" column="93" lean-forward="true" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="93" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DessertCanDelete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="41" column="21" lean-forward="false" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Rice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dessert.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="68" column="21" lean-forward="false" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

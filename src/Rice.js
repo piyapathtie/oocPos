@@ -66,7 +66,8 @@ class EachMenu extends Component {
         return (
             <div className="recipe">
                 <a className="btnStyle3 btnStyle addToCart" id="addToCart" onClick={() =>  this._buttonClick()}>Add to Cart</a>
-                <div className="obj" id={this.state.name} >
+                <div style={{backgroundColor: "white", padding: "10px", borderRadius: "10px"}}
+                     id={this.state.name} >
                     <div> <img src={this.state.img}/> </div>
                     <div> <h4>{this.state.name}</h4> - {this.state.price} </div>
                 </div>

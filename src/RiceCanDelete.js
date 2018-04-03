@@ -40,7 +40,9 @@ class EachMenu extends Component {
         return (
             <div className="recipe">
                 <a className="btnStyle4 btnStyle addToCart" id="addToCart" onClick={() =>  this._buttonClick()}>Delete</a>
-                <div className="obj" id={this.state.name} >
+                <div
+                    style={{backgroundColor: "white", padding: "10px", borderRadius: "10px"}}
+                     id={this.state.name} >
                     <div> <img src={this.state.img}/> </div>
                     <div> <h4>{this.state.name}</h4> - {this.state.price} </div>
                 </div>
@@ -82,7 +84,7 @@ export default class RiceCanDelete extends React.Component {
                             categoryType={menu.categoryType}
                             name={menu.name}
                             price={menu.price}
-                            image={"http://192.168.1.174:8080/test/image/" + menu.filepath}
+                            image={"http://192.168.1.175:8080/test/image/" + menu.filepath}
                             id={menu.id}
                         />)
                     })}
