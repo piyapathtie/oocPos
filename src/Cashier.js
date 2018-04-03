@@ -69,6 +69,16 @@ class Cashier extends React.Component {
     }
 
     componentDidMount() {
+        axios.get(`/user/whoami`)
+            .then((response) => {
+                console.log("this is check")
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+                this.props.history.push('/')
+            });
+
         this.fetch();
         this.interval = setInterval(this.tick, 5000);
     }
@@ -85,8 +95,9 @@ class Cashier extends React.Component {
     };
 
 
-    checkOut = (recid) =>{
-        axios.get(`checkout?id=${recid}`)
+    checkOut = (uuid) =>{
+        console.log(uuid)
+        axios.get(`checkout?id=${uuid}`)
             .then((response) => {
                 this.setState({order: response.data})
                 console.log(response)
@@ -107,10 +118,11 @@ class Cashier extends React.Component {
             })
     };
 
-    handleOpenDialog = (recid) => {
+    handleOpenDialog = (uuid) => {
+        console.log(uuid);
         this.setState({openDialog: true});
-        this.setState({recid: recid})
-        this.checkOut(localStorage.getItem("BillID"));
+        this.setState({recid: uuid}, () => this.checkOut(this.state.recid));
+        console.log(this.state.recid)
     };
 
     handleCloseDialog = () => {
@@ -168,18 +180,6 @@ class Cashier extends React.Component {
           })
           }
 
-              <Card className="recipe-menu">
-                  <CardHeader
-                      title={"Take away"}
-                      subtitle="Bill: "
-                  />
-                  <CardActions>
-                      <FlatButton label="Action1" />
-                      <IconButton >
-                          <MoneyIcon color={"green"} viewBox={'0 0 24 24'}/>
-                      </IconButton>
-                  </CardActions>
-              </Card>
 
           </div>
 

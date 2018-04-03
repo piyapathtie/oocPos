@@ -44,18 +44,16 @@ class MainMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            role: "",
         };
     }
 
     componentDidMount() {
-        // var loginParams = {
-        //     username: "staff"
-        // }
-
         axios.get(`/user/whoami`)
             .then((response) => {
                 console.log("this is check")
                 console.log(response.data);
+                this.setState({role: response.data})
             })
             .catch((error) => {
                 console.log(error)
@@ -68,20 +66,18 @@ class MainMenu extends Component {
             .then((response) => {
                 console.log("log out")
                 console.log(response)
+                this.props.history.push('/')
             })
             .catch((error) => {
                 console.log(error)
-                this.props.history.push('/')
             })
     };
 
   render() {
-      console.log(localStorage.getItem("login"))
 
-    if (localStorage.getItem("login") != "true") {
-      return <Redirect to='/'/>;
-    }
-
+    // if (localStorage.getItem("login") != "true") {
+    //   return <Redirect to='/'/>;
+    // }
 
     return (
       <div>
@@ -102,8 +98,16 @@ class MainMenu extends Component {
             <ListItem primaryText="Kitchen" leftIcon={<ForKit />} onClick={()=>this.props.history.push('/kitchen')}/>
             <ListItem primaryText="Dessert Kitchen" leftIcon={<Fordessertkit />} onClick={()=>this.props.history.push('/dessertkitchen')}/>
             <ListItem primaryText="Cashier" leftIcon={<ForCashier />} onClick={()=>this.props.history.push('/cashier')}/>
-            <ListItem primaryText="Menu Management" leftIcon={<AddMenu />} onClick={()=>this.props.history.push('/manage')}/>
-            <ListItem primaryText="Sale Report" leftIcon={<Chart />} onClick={()=>this.props.history.push('/saleReport')}/>
+            <ListItem primaryText="Menu Management"
+                      leftIcon={<AddMenu />}
+                      disabled={this.state.role === "staff"}
+                      onClick={()=>this.props.history.push('/manage')}
+            />
+            <ListItem primaryText="Sale Report"
+                      leftIcon={<Chart />}
+                      disabled={this.state.role === "staff"}
+                      onClick={()=>this.props.history.push('/saleReport')}
+            />
           </List>
         </div>
     </div>

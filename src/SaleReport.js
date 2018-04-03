@@ -60,15 +60,17 @@ class SaleReport extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("/allRecord")
+        axios.get(`/user/whoami`)
             .then((response) => {
-                // this.state.menus = response.data
-                // console.log(response.data);
-                console.log(response)
-                this.setState({dates: response.data})
+                console.log("this is check")
+                console.log(response.data);
+                if(response.data !== "manager"){
+                    this.props.history.push('/mainmenu')
+                }
             })
             .catch((error) => {
                 console.log(error)
+                this.props.history.push('/')
             })
     }
 
@@ -87,22 +89,30 @@ class SaleReport extends React.Component {
             })
     };
 
+
     handleChange = (event, date) => {
         // console.log(new Date())
         // console.log(date)
+        var dayy = "";
+        var month = "";
+
         console.log(date.toLocaleDateString().split("/")[0].length)
         if(date.toLocaleDateString().split("/")[0].length == 1){
-            this.setState({
-                controlledDate: date,
-                dateToSend: 0+date.toLocaleDateString()
-            }, ()=> this.requestForEachDay(this.state.dateToSend));
+            dayy = 0 + date.toLocaleDateString().split("/")[0]
         }
         else{
-            this.setState({
-                controlledDate: date,
-                dateToSend: date.toLocaleDateString()
-            }, ()=> this.requestForEachDay(this.state.dateToSend));
+            dayy =  date.toLocaleDateString().split("/")[0]
         }
+
+        if(date.toLocaleDateString().split("/")[1].length == 1){
+            month = 0 + date.toLocaleDateString().split("/")[1]
+        }
+
+        else{
+            month = date.toLocaleDateString().split("/")[1]
+        }
+
+        this.requestForEachDay(dayy + "/" + month + "/" + date.toLocaleDateString().split("/")[2])
 
     };
 

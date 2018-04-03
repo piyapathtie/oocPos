@@ -86,6 +86,21 @@ class Manage extends Component {
     };
   }
 
+    componentDidMount() {
+        axios.get(`/user/whoami`)
+            .then((response) => {
+                console.log("this is check")
+                console.log(response.data);
+                if(response.data !== "manager"){
+                    this.props.history.push('/mainmenu')
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+                this.props.history.push('/')
+            })
+    }
+
   sendRequest = () => {
       // console.log(this.state.value)
     const data = new FormData();
