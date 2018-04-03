@@ -56,8 +56,8 @@ class tableNo extends React.Component {
           this.setState({show: true})
         }
         else{
-          localStorage.setItem("tableID", parseInt(this.state.input))
-            localStorage.setItem('toCart', JSON.stringify([]))
+            localStorage.setItem("tableID", parseInt(this.state.input))
+            localStorage.setItem('toCart', [])
             localStorage.setItem('BillID', 0);
           this.props.history.push('/menu')
         }

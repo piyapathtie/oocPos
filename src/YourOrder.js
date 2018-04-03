@@ -90,7 +90,7 @@ class YourOrder extends React.Component {
             .catch((error) => {
                 console.log(error)
             })
-        
+
         axios.get(`/user/whoami`)
             .then((response) => {
                 console.log("this is check")
