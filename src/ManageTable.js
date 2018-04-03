@@ -85,7 +85,7 @@ class ManageTable extends React.Component {
     }
 
     fetch = () => {
-        axios.get("/demo//all_table_true")
+        axios.get("/demo/all_table_true")
             .then((response) => {
                 this.setState({tables: response.data})
                 console.log(this.state.tables)

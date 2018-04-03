@@ -101,6 +101,17 @@ export default class Menu extends React.Component {
         axios.get(`/demo/check_login?table=${localStorage.getItem("tableID")}`)
             .then((response) => {
                 console.log(response.data);
+                if (response.data !== true){
+                    axios.post("/logout")
+                        .then((response) => {
+                            console.log("log out")
+                            console.log(response)
+                            this.props.history.push('/')
+                        })
+                        .catch((error) => {
+                            console.log(error)
+                        })
+                }
             })
             .catch((error) => {
                 console.log(error)
