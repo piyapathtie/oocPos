@@ -166,6 +166,7 @@ class YourOrder extends React.Component {
             .then((response) => {
                 console.log(response.data)
                 this.setState({opencancel: false})
+                
                 // if(response.data === false){
                 //     this.handleOpencancel()
                 // }

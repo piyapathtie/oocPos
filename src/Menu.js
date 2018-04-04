@@ -135,9 +135,16 @@ export default class Menu extends React.Component {
 
 
   update = (data, elt) => {
-      data.splice(getIndex(elt, data),1)
-      localStorage.setItem("Cart", JSON.stringify(data))
-      this.forceUpdate()
+      //   console.log(data)
+      // console.log(elt)
+      // console.log(data.indexOf(elt))
+      if(data.indexOf(elt) != -1){
+          data.splice(getIndex(elt, data),1)
+          localStorage.setItem("Cart", JSON.stringify(data))
+          this.forceUpdate()
+      }
+
+
   }
 
 
@@ -190,7 +197,7 @@ export default class Menu extends React.Component {
   render() {
 
       let data = JSON.parse(localStorage.getItem('Cart'));
-      data = data == null ? [] : data;
+      // data = data == null ? [] : data;
 
       const actions = [
           <FlatButton
@@ -249,6 +256,7 @@ export default class Menu extends React.Component {
                                   primaryText = {each.name}
                                   secondaryText = {each.price}
                                   rightIconButton={<Cancel onClick={() => this.update(data, each)} />}
+                                  // key={each.id}
                               />
                           )
                       })

@@ -17,9 +17,9 @@ import MoneyIcon from 'material-ui/svg-icons/editor/monetization-on';
 
 
 import {
-  Step,
-  Stepper,
-  StepLabel,
+    Step,
+    Stepper,
+    StepLabel,
 } from 'material-ui/Stepper';
 
 import MenuItem from 'material-ui/MenuItem';
@@ -27,24 +27,24 @@ import AppBar from 'material-ui/AppBar';
 
 
 import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
+    Table,
+    TableBody,
+    TableHeader,
+    TableHeaderColumn,
+    TableRow,
+    TableRowColumn,
 } from 'material-ui/Table';
 
 
 function Bar({onClick}) {
-    return(
+    return (
         <AppBar
-          title="Cashier"
-          iconElementLeft={
-            <IconButton onClick={onClick}>
-              <BackIcon/>
-            </IconButton>}
-          style={{backgroundColor: "#D50000"}}
+            title="Cashier"
+            iconElementLeft={
+                <IconButton onClick={onClick}>
+                    <BackIcon/>
+                </IconButton>}
+            style={{backgroundColor: "#D50000"}}
         />
     );
 }
@@ -60,7 +60,7 @@ class Cashier extends React.Component {
             showCheckboxes: false,
             recid: 0,
         };
-        this.tick  = this.tick.bind(this)
+        this.tick = this.tick.bind(this)
     }
 
     tick = () => {
@@ -73,7 +73,7 @@ class Cashier extends React.Component {
             .then((response) => {
                 console.log("this is check")
                 console.log(response.data);
-                if(response.data === "table"){
+                if (response.data === "table") {
                     this.props.history.push('/menu')
                 }
             })
@@ -98,7 +98,7 @@ class Cashier extends React.Component {
     };
 
 
-    checkOut = (uuid) =>{
+    checkOut = (uuid) => {
         console.log(uuid)
         axios.get(`checkout?id=${uuid}`)
             .then((response) => {
@@ -110,8 +110,19 @@ class Cashier extends React.Component {
             })
     };
 
-    setPaid = (recid) =>{
+    setPaid = (recid) => {
         axios.post(`/setStatus?id=${recid}`)
+            .then((response) => {
+                console.log(response)
+                this.handleCloseDialog();
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    };
+
+    setCancel = (recid) => {
+        axios.put(`/make_cancel?id=${recid}`)
             .then((response) => {
                 console.log(response)
                 this.handleCloseDialog();
@@ -132,102 +143,110 @@ class Cashier extends React.Component {
         this.setState({openDialog: false});
     };
 
-  render(){
+    render() {
 
-      const {tables, showCheckboxes, sum, order} = this.state
+        const {tables, showCheckboxes, sum, order} = this.state
 
-      const actions = [
-          <FlatButton
-              label="Cancel"
-              primary={true}
-              onClick={this.handleCloseDialog}
-          />,
-          <FlatButton
-              label="Confirm Paid"
-              primary={true}
-              // keyboardFocused={true}
-              onClick={()=>this.setPaid(this.state.recid)}
-          />,
-      ];
-
-
-    return (
-      <div >
-
-        <Bar onClick={()=>this.props.history.push('/mainmenu')}/>
-
-
-          <div style={{marginTop: "100px",
-              display: "flex",
-              justifyContent: "space-around",
-              flexWrap: "wrap"
-          }}>
-          {tables.map((each) => {
-              return(
-                  <Card className="recipe-menu">
-                      <CardHeader
-                          title={"#" + each.tablenum}
-                          subtitle={"Bill: " + each.id}
-                      />
-                      <CardActions>
-                          <FlatButton label="Check Out" onClick={()=>this.handleOpenDialog(each.id)}/>
-                          <IconButton disabled={!("pending" === each.status)}>
-                              <MoneyIcon
-                                  color={"green"}
-                                  viewBox={'0 0 24 24'}
-                              />
-                          </IconButton>
-                      </CardActions>
-                  </Card>
-              )
-          })
-          }
+        const actions = [
+            <FlatButton
+                label="Cancel this bill record"
+                primary={true}
+                onClick={() => this.setCancel(this.state.recid)}
+                style={{color: "#d50000", float: "left",}}
+            />,
+            <FlatButton
+                label="Back"
+                primary={true}
+                onClick={this.handleCloseDialog}
+            />,
+            <FlatButton
+                label="Confirm Paid"
+                primary={true}
+                // keyboardFocused={true}
+                onClick={() => this.setPaid(this.state.recid)}
+            />,
+        ];
 
 
-          </div>
+        return (
+            <div>
 
-          <Dialog
-              title="Your Order"
-              actions={actions}
-              modal={false}
-              open={this.state.openDialog}
-              // onRequestClose={this.handleCloseDialog}
-              autoScrollBodyContent={true}
-          >
-              <Table
-                  // style={{ marginTop: "70px"}}
-              >
-                  <TableHeader displaySelectAll={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
+                <Bar onClick={() => this.props.history.push('/mainmenu')}/>
 
-                      <TableRow>
-                          <TableHeaderColumn>Name</TableHeaderColumn>
-                          <TableHeaderColumn>Amount</TableHeaderColumn>
-                          <TableHeaderColumn>Price</TableHeaderColumn>
-                      </TableRow>
-                  </TableHeader>
 
-                  <TableBody
-                      displayRowCheckbox={showCheckboxes}
-                  >
+                <div style={{
+                    marginTop: "100px",
+                    display: "flex",
+                    justifyContent: "space-around",
+                    flexWrap: "wrap"
+                }}>
+                    {tables.map((each) => {
+                        return (
+                            <Card className="recipe-menu">
+                                <CardHeader
+                                    title={"#" + each.tablenum}
+                                    subtitle={"Bill: " + each.id}
+                                />
+                                <CardActions>
+                                    <FlatButton label="Check Out" onClick={() => this.handleOpenDialog(each.id)}/>
+                                    <IconButton disabled={!("pending" === each.status)}>
+                                        <MoneyIcon
+                                            color={"green"}
+                                            viewBox={'0 0 24 24'}
+                                        />
+                                    </IconButton>
+                                </CardActions>
+                            </Card>
+                        )
+                    })
+                    }
 
-                      {order.map((each) => {
-                          return(
-                              <TableRow>
-                                  <TableRowColumn>{each.name}</TableRowColumn>
-                                  <TableRowColumn>{each.amount}</TableRowColumn>
-                                  <TableRowColumn>{each.price}</TableRowColumn>
-                              </TableRow>
-                          )
-                      })
-                      }
-                  </TableBody>
-              </Table>
 
-          </Dialog>
+                </div>
 
-      </div>
-    )
-  }
+                <Dialog
+                    title="Your Order"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.openDialog}
+                    // onRequestClose={this.handleCloseDialog}
+                    autoScrollBodyContent={true}
+                >
+                    <Table
+                        // style={{ marginTop: "70px"}}
+                    >
+                        <TableHeader displaySelectAll={this.state.showCheckboxes}
+                                     adjustForCheckbox={this.state.showCheckboxes}>
+
+                            <TableRow>
+                                <TableHeaderColumn>Name</TableHeaderColumn>
+                                <TableHeaderColumn>Amount</TableHeaderColumn>
+                                <TableHeaderColumn>Price</TableHeaderColumn>
+                            </TableRow>
+                        </TableHeader>
+
+                        <TableBody
+                            displayRowCheckbox={showCheckboxes}
+                        >
+
+                            {order.map((each) => {
+                                return (
+                                    <TableRow>
+                                        <TableRowColumn>{each.name}</TableRowColumn>
+                                        <TableRowColumn>{each.amount}</TableRowColumn>
+                                        <TableRowColumn>{each.price}</TableRowColumn>
+                                    </TableRow>
+                                )
+                            })
+                            }
+                        </TableBody>
+                    </Table>
+
+                </Dialog>
+
+            </div>
+        )
+    }
 }
 
 export default Cashier;

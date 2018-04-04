@@ -3,7 +3,8 @@ import React from "react";
 
 import waterfall from 'async/waterfall';
 import axios from "./AxiosConfiguration";
-
+import config from './config'
+import Snackbar from 'material-ui/Snackbar';
 
 class EachMenu extends Component {
 
@@ -15,13 +16,22 @@ class EachMenu extends Component {
             img: props.image,
             categoryType: props.categoryType,
             id: props.id,
+            open: false,
         }
 
         this.state.item = [
         ]
     }
 
+    handleRequestClose = () => {
+        this.setState({
+            open: false,
+        });
+    };
+
     _buttonClick = () => {
+
+        this.setState({open: true})
 
         // Dont do this style!!
         const {categoryType, name, price, id} = this.state;
@@ -63,6 +73,7 @@ class EachMenu extends Component {
 
     render(){
         return (
+            <div>
             <div className="recipe">
                 <a className="btnStyle3 btnStyle addToCart" id="addToCart" onClick={() =>  this._buttonClick()}>Add to Cart</a>
                 <div style={{backgroundColor: "white", padding: "10px", borderRadius: "10px"}}
@@ -71,8 +82,27 @@ class EachMenu extends Component {
                     <div> <h4>{this.state.name}</h4> - {this.state.price} </div>
                 </div>
             </div>
+                <Snackbar
+                    open={this.state.open}
+                    message="Your order is added to cart"
+                    autoHideDuration={1500}
+                    onRequestClose={this.handleRequestClose}
+                />
+                </div>
         )
     }
+}
+
+
+function MenuCard({menu, ...props}){
+    return (<EachMenu
+        categoryType={menu.categoryType}
+        name={menu.name}
+        price={menu.price}
+        image={config.imagePath + menu.filepath}
+        id={menu.id}
+        {...props}
+    />)
 }
 
 export default class Dessert extends React.Component {
@@ -103,13 +133,7 @@ export default class Dessert extends React.Component {
             <div className="body-content">
                 <div className="recipe-menu">
                     {this.state.menus.map((menu) => {
-                        return (<EachMenu
-                            categoryType={menu.categoryType}
-                            name={menu.name}
-                            price={menu.price}
-                            image={"http://192.168.1.175:8080/test/image/" + menu.filepath}
-                            id={menu.id}
-                        />)
+                        return (<MenuCard menu={menu} key={menu.id}/>)
                     })}
                 </div>
             </div>

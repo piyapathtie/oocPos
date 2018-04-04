@@ -68,7 +68,7 @@ class App extends Component {
         })
         .catch((error) => {
             console.log(error)
-          // this.setState({show: true})
+          this.setState({show: true})
           // console.log(authentication);
         })
   }
