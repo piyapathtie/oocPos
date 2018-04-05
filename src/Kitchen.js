@@ -79,8 +79,6 @@ class Kitchen extends React.Component {
     axios.put(`/update_by_kitchen?id=${id}&currentStatus=${status}`)
       .then((response) => {
         this.fetchData()
-        // console.log(response.data);
-        // console.log("update complete")
       })
       .catch((error) => {
         console.log(error)
@@ -91,14 +89,20 @@ class Kitchen extends React.Component {
     console.log("fetch")
     axios.get("/each_kitchen?categoryType=FOOD&status=Done")
       .then((response) => {
-        // console.log(isNaN(response.data[0].id))
         this.setState({data: response.data})
           console.log(this.state.data)
       })
       .catch((error) => {
         console.log(error)
       })
-  }
+  };
+
+  iWillLoopForU = (each) => {
+      console.log(each)
+      each.map((elt) => {
+          console.log(elt)
+      })
+  };
 
   render(){
     const {data, showCheckboxes} = this.state
@@ -121,22 +125,26 @@ class Kitchen extends React.Component {
           <TableBody displayRowCheckbox={showCheckboxes}>
 
         {data.map((each) => {
-          return(
 
-            <TableRow key={each.UUID}>
-              <TableRowColumn>{each.value}</TableRowColumn>
-              <TableRowColumn>{each.key.menu.name}</TableRowColumn>
-              <TableRowColumn>
-                {/* {<DropDownMenuOpenImmediateExample />} */}
-                <MenuItem  primaryText="Waiting" onClick={() => this.updateItemStatus(each.key.id, "Waiting")}/>
-                <MenuItem  primaryText="Cooking" onClick={() => this.updateItemStatus(each.key.id, "Cooking")}/>
-                <MenuItem  primaryText="Done" onClick={() => this.updateItemStatus(each.key.id, "Done")}/>
-              </TableRowColumn>
-              <TableRowColumn>{each.key.currentStatus}</TableRowColumn>
-              {/* <TableRowColumn> <RaisedButton onClick={() => console.log(each)}/> </TableRowColumn> */}
-            </TableRow>
 
+
+            return(
+
+                <TableRow>
+                    <TableRowColumn>{each.value}</TableRowColumn>
+                    <TableRowColumn>{each.key.menu.name}</TableRowColumn>
+                    <TableRowColumn>
+                        {/* {<DropDownMenuOpenImmediateExample />} */}
+                        <MenuItem  primaryText="Waiting" onClick={() => this.updateItemStatus(each.key.id, "Waiting")}/>
+                        <MenuItem  primaryText="Cooking" onClick={() => this.updateItemStatus(each.key.id, "Cooking")}/>
+                        <MenuItem  primaryText="Done" onClick={() => this.updateItemStatus(each.key.id, "Done")}/>
+                    </TableRowColumn>
+                    <TableRowColumn>{each.key.currentStatus}</TableRowColumn>
+                    {/* <TableRowColumn> <RaisedButton onClick={() => console.log(each)}/> </TableRowColumn> */}
+                </TableRow>
             )
+
+
           })
         }
 

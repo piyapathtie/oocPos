@@ -52,7 +52,7 @@ class App extends Component {
         password: this.state.password
       }
 
-      console.log(urlencode(loginParams))
+      console.log('loginparam', urlencode(loginParams))
       axios.post("/login", urlencode(loginParams))
         .then((response) => {
             localStorage.setItem("role", response.data.role)

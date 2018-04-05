@@ -84,7 +84,7 @@ export default class RiceCanDelete extends React.Component {
                             categoryType={menu.categoryType}
                             name={menu.name}
                             price={menu.price}
-                            image={"http://192.168.1.175:8080/test/image/" + menu.filepath}
+                            image={"http://35.185.181.127:8080/test/image/" + menu.filepath}
                             id={menu.id}
                         />)
                     })}
